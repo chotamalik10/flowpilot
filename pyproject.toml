@@ -5,12 +5,12 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "flowpilot"
 version = "0.2.0"
-description = "A local-first workflow automation engine with CLI and web dashboard."
+description = "A local-first workflow automation engine with CLI and app-style web dashboard."
 readme = "README.md"
 requires-python = ">=3.10"
 license = { file = "LICENSE" }
 authors = [{ name = "FlowPilot Contributors" }]
-keywords = ["automation", "workflow", "cli", "dashboard", "task-runner"]
+keywords = ["automation", "workflow", "cli", "dashboard", "task-runner", "pwa"]
 classifiers = [
   "Development Status :: 3 - Alpha",
   "Environment :: Console",
@@ -24,6 +24,7 @@ classifiers = [
   "Programming Language :: Python :: 3.14",
   "Topic :: Software Development :: Libraries :: Python Modules",
 ]
+
 dependencies = []
 
 [project.optional-dependencies]
@@ -36,7 +37,7 @@ flowpilot = "flowpilot.cli:main"
 include = ["flowpilot*"]
 
 [tool.setuptools.package-data]
-flowpilot = ["dashboard/*.html", "dashboard/*.css", "dashboard/*.js"]
+flowpilot = ["dashboard/*.html", "dashboard/*.css", "dashboard/*.js", "dashboard/*.webmanifest", "dashboard/icons/*.svg"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
