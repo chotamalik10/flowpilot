@@ -1,0 +1,16 @@
+{
+  "id": "/",
+  "name": "FlowPilot — Workflow Studio",
+  "short_name": "FlowPilot",
+  "description": "A private, local-first workflow automation studio.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#080d19",
+  "theme_color": "#080d19",
+  "icons": [
+    { "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "/icons/icon-maskable.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}
