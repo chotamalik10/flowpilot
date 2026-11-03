@@ -101,6 +101,7 @@ class DashboardHandler(BaseHTTPRequestHandler):
                 self._json(200 if result.success else 422, {
                     "name": result.name,
                     "success": result.success,
+                    "error": None if result.success else "One or more workflow steps failed.",
                     "steps": [asdict(step) for step in result.steps],
                 })
             except WorkflowValidationError as exc:
