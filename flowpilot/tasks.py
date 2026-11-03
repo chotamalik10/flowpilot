@@ -17,7 +17,7 @@ TASKS: dict[str, Task] = {
 }
 
 
-def run_task(task_type: str, config: dict[str, typing.Any]) -> None:
+def run_task(task_type: str, config: dict[str, Any]) -> None:
     task = TASKS.get(task_type)
     if task is None:
         available = ", ".join(sorted(TASKS))
