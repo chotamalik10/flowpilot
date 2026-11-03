@@ -3,41 +3,52 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b1020">
-  <title>FlowPilot — Automation Control Center</title>
+  <meta name="theme-color" content="#080d19">
+  <meta name="description" content="FlowPilot is your private, local-first workflow automation studio.">
+  <title>FlowPilot — Automation Studio</title>
+  <link rel="icon" href="/icons/icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
 </head>
 <body>
   <div class="app-shell">
-    <aside class="sidebar">
-      <a class="brand" href="#"><span class="brand-mark">F</span><span>FlowPilot<small>AUTOMATION STUDIO</small></span></a>
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="FlowPilot home"><span class="brand-mark">F</span><span class="brand-copy">FlowPilot<small>WORKFLOW STUDIO</small></span></a>
+      <div class="workspace-switch"><span class="workspace-avatar">Z</span><span><b>Personal workspace</b><small>Local environment</small></span><span class="chevron">⌄</span></div>
       <div class="nav-label">WORKSPACE</div>
-      <a class="nav-item active" href="#"><span>◫</span> Overview</a>
-      <a class="nav-item" href="#builder"><span>⌘</span> Workflow builder</a>
-      <a class="nav-item" href="#history"><span>◷</span> Activity</a>
-      <div class="sidebar-bottom"><span class="status-dot"></span> Local engine connected<small>Runs privately on this device</small></div>
+      <a class="nav-item active" href="#overview"><span class="nav-icon">⌂</span> Overview</a>
+      <a class="nav-item" href="#builder"><span class="nav-icon">✳</span> Workflow builder</a>
+      <a class="nav-item" href="#history"><span class="nav-icon">◷</span> Automations</a>
+      <div class="sidebar-card"><div class="sidebar-art" aria-hidden="true"><span></span><i></i><b></b></div><b>Your work, in motion.</b><p>Build repeatable routines and run them from one calm workspace.</p><a href="#builder">Create your first flow <span>↗</span></a></div>
+      <div class="sidebar-bottom"><span class="status-dot"></span><span><b>Private engine</b><small>Connected on this device</small></span><span class="lock">⌑</span></div>
     </aside>
-    <main class="main">
-      <header class="topbar"><div><div class="eyebrow">WORKSPACE / OVERVIEW</div><h1>Automation control center</h1><p>Design, launch and monitor your workflows.</p></div><div class="top-actions"><span class="local-pill"><i></i> LOCAL MODE</span><button class="primary" id="new-workflow">＋ New workflow</button></div></header>
+    <main class="main" id="overview">
+      <header class="topbar"><button class="mobile-menu" id="menu-toggle" aria-label="Toggle navigation">☰</button><div class="breadcrumb">WORKSPACE <span>/</span> OVERVIEW</div><div class="top-actions"><span class="local-pill"><i></i> LOCAL & SECURE</span><button class="icon-button" id="install-app" hidden>↓ <span>Install app</span></button><button class="primary" id="new-workflow"><span>＋</span> New workflow</button></div></header>
+      <section class="welcome"><div class="welcome-copy"><div class="eyebrow"><span class="sparkle">✦</span> YOUR AUTOMATION WORKSPACE</div><h1>Make busywork<br><em>move itself.</em></h1><p>One focused place to create, manage, and run your everyday workflows.</p><div class="welcome-actions"><button class="primary" id="welcome-create">Create a workflow <span>→</span></button><span class="trust-note"><span class="tiny-shield">◈</span> Runs locally. Your data stays yours.</span></div></div><div class="hero-visual" role="img" aria-label="Abstract illustration of connected workflow cards"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="hero-glow"></div><div class="hero-node node-a">✦</div><div class="hero-node node-b">↗</div><div class="hero-node node-c">✓</div><div class="hero-window"><div class="window-top"><span></span><span></span><span></span><small>FLOW / 001</small></div><div class="flow-line"><i></i><b>Trigger received</b><span>NOW</span></div><div class="flow-line active-line"><i>✦</i><b>Process workflow</b><span>RUNNING</span></div><div class="flow-line"><i>✓</i><b>Task completed</b><span>READY</span></div><div class="window-footer"><span>● SYSTEM ONLINE</span><span>100%</span></div></div></div></section>
+      <section class="section-head"><div><div class="eyebrow">AT A GLANCE</div><h2>Your workspace</h2><p>A live snapshot of your local automation engine.</p></div><span class="updated-label"><i></i> Live status</span></section>
       <section class="stats">
-        <article class="stat-card"><span>Total workflows</span><strong id="workflow-count">—</strong><small>Saved on this device</small></article>
-        <article class="stat-card"><span>Engine status</span><strong class="online">Operational</strong><small>Local API responding</small></article>
-        <article class="stat-card"><span>Execution mode</span><strong>On demand</strong><small>Manual workflow runs</small></article>
+        <article class="stat-card"><div class="stat-top"><span>Total workflows</span><span class="stat-icon purple">⌘</span></div><strong id="workflow-count">—</strong><small>Saved in your workspace</small><div class="stat-foot"><span class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i></span><span>Workflow library</span></div></article>
+        <article class="stat-card"><div class="stat-top"><span>Engine status</span><span class="stat-icon green">◉</span></div><strong class="online">Operational</strong><small>Local API responding</small><div class="stat-foot"><span class="pulse-dot"></span><span>All systems ready</span></div></article>
+        <article class="stat-card"><div class="stat-top"><span>Execution mode</span><span class="stat-icon blue">↗</span></div><strong>On demand</strong><small>You control every run</small><div class="stat-foot"><span class="mode-chip">MANUAL RUNS</span><span>Safe by default</span></div></article>
       </section>
-      <section class="panel" id="builder">
-        <div class="panel-heading"><div><div class="eyebrow">BUILD & DEPLOY</div><h2>Create a workflow</h2><p>Start with a safe print task. More task types can be added as the engine grows.</p></div><span class="step-count">01 / BUILDER</span></div>
+      <section class="panel builder-panel" id="builder">
+        <div class="panel-heading"><div><div class="eyebrow">FLOW DESIGNER <span class="eyebrow-dot">●</span> STEP 01</div><h2>Create something useful</h2><p>Start with a simple message task. Your workflow is checked before it is saved.</p></div><div class="panel-illustration" aria-hidden="true"><span>✳</span><i></i><b></b></div></div>
         <form id="workflow-form">
-          <label>Workflow name<input id="workflow-name" required maxlength="64" placeholder="e.g. Daily report"></label>
-          <div class="builder-step"><div class="step-number">01</div><div class="step-fields"><label>Step name<input id="step-name" required value="welcome" maxlength="64"></label><label>Task type<select id="task-type"><option value="print">Print message</option></select></label><label class="wide">Message<input id="step-message" required value="Hello from FlowPilot!" maxlength="2000"></label></div></div>
-          <div class="form-footer"><span class="muted">Workflow is validated before saving.</span><button class="primary" type="submit">Save workflow</button></div>
+          <label class="field-label">Give your workflow a name<input id="workflow-name" required maxlength="64" placeholder="e.g. Daily team update"></label>
+          <div class="builder-step"><div class="step-badge">01</div><div class="step-fields"><label class="field-label">Step name<input id="step-name" required value="welcome" maxlength="64"></label><label class="field-label">Action type<select id="task-type"><option value="print">Print a message</option></select></label><label class="field-label full">Your message<input id="step-message" required value="Hello from FlowPilot!" maxlength="2000" placeholder="Write a message for this task..."></label></div></div>
+          <div class="form-footer"><span class="form-hint"><span>◈</span> Validated before saving · Stored locally</span><button class="primary" type="submit">Save workflow <span>→</span></button></div>
         </form>
       </section>
-      <section class="panel" id="history">
-        <div class="panel-heading"><div><div class="eyebrow">YOUR AUTOMATIONS</div><h2>Workflows</h2><p>Saved workflows ready to execute.</p></div><button class="subtle" id="refresh">↻ Refresh</button></div>
-        <div id="workflow-list" class="workflow-list"><div class="empty">Loading workflows…</div></div>
+      <section class="panel library-panel" id="history">
+        <div class="panel-heading library-heading"><div><div class="eyebrow">YOUR LIBRARY</div><h2>Workflows</h2><p>Your saved automations, ready whenever you are.</p></div><button class="subtle" id="refresh">↻ <span>Refresh</span></button></div>
+        <div id="workflow-list" class="workflow-list"><div class="empty"><span class="loader"></span> Loading your workflows…</div></div>
       </section>
+      <div class="bottom-note"><span class="note-icon">⌑</span><span><b>Built for privacy.</b> FlowPilot runs on your device and does not send your workflows to a cloud service.</span></div>
       <div id="notice" class="notice" role="status" aria-live="polite"></div>
-      <footer>FLOWPILOT <span>•</span> Open-source workflow automation <span>•</span> Local-first by design</footer>
+      <footer><span class="footer-brand">FLOWPILOT</span><span>Open-source workflow automation</span><span class="footer-version">LOCAL-FIRST BY DESIGN</span></footer>
     </main>
   </div>
   <script src="/app.js"></script>
