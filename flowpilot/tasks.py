@@ -1,14 +1,14 @@
-from collections.abc import Callable
-from typing import Any
+import collections.abc
+import typing
 
 
-Task = Callable[[dict[str, Any]], None]
+Task = collections.abc.Callable[[dict[str, typing.Any]], None]
 
 
 def print_task(config: dict[str, Any]) -> None:
     message = config.get("message")
     if not isinstance(message, str):
-        raise ValueError("'print' task requires a string 'message'.")
+        raise TypeError("'print' task requires a string 'message'.")
     print(message)
 
 
