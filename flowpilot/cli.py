@@ -62,7 +62,7 @@ def main(argv: list[str] | None = None) -> int:
     )
     result = run_workflow(workflow)
     passed = sum(step.success for step in result.steps)
-    print(f"\\nWorkflow: {result.name}")
+    print(f"\nWorkflow: {result.name}")
     print(f"Result: {'SUCCESS' if result.success else 'FAILED'}")
     print(f"Steps: {passed}/{len(result.steps)} succeeded")
     for step in result.steps:
