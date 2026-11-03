@@ -42,7 +42,7 @@ def run_workflow(workflow: Workflow) -> WorkflowResult:
                 run_task(step.task_type, step.config)
                 error = None
                 break
-            except Exception as exc:
+            except Exception as exc:  # noqa: BLE001 - task failures must become step results
                 error = str(exc)
                 logger.warning("Step '%s' failed: %s", step.name, error)
 

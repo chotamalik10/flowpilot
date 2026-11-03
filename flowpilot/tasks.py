@@ -1,14 +1,14 @@
-from collections.abc import Callable
-from typing import Any
+# isort: skip_file
+import typing
 
 
-Task = Callable[[dict[str, Any]], None]
+Task = typing.Callable[[dict[str, typing.Any]], None]
 
 
-def print_task(config: dict[str, Any]) -> None:
+def print_task(config: dict[str, typing.Any]) -> None:
     message = config.get("message")
     if not isinstance(message, str):
-        raise ValueError("'print' task requires a string 'message'.")
+        raise TypeError("'print' task requires a string 'message'.")
     print(message)
 
 
@@ -17,7 +17,7 @@ TASKS: dict[str, Task] = {
 }
 
 
-def run_task(task_type: str, config: dict[str, Any]) -> None:
+def run_task(task_type: str, config: dict[str, typing.Any]) -> None:
     task = TASKS.get(task_type)
     if task is None:
         available = ", ".join(sorted(TASKS))
