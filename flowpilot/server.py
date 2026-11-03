@@ -16,6 +16,12 @@ PROJECT_ROOT = Path.cwd()
 WORKFLOWS_DIR = PROJECT_ROOT / "workflows"
 DASHBOARD_DIR = Path(__file__).with_name("dashboard")
 SAFE_NAME = re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9_-]{0,63}$")
+STATIC_ASSETS = {
+    "/manifest.webmanifest": ("manifest.webmanifest", "application/manifest+json"),
+    "/service-worker.js": ("service-worker.js", "text/javascript; charset=utf-8"),
+    "/icons/icon.svg": ("icons/icon.svg", "image/svg+xml"),
+    "/icons/icon-maskable.svg": ("icons/icon-maskable.svg", "image/svg+xml"),
+}
 
 
 def _json_bytes(payload: Any) -> bytes:
@@ -61,14 +67,17 @@ class DashboardHandler(BaseHTTPRequestHandler):
             self._json(200, {"workflows": items})
             return
         if path in {"/", "/index.html"}:
-            target = DASHBOARD_DIR / "index.html"
-            self._send(200, target.read_bytes(), "text/html; charset=utf-8")
+            self._send(200, (DASHBOARD_DIR / "index.html").read_bytes(), "text/html; charset=utf-8")
             return
         if path == "/styles.css":
             self._send(200, (DASHBOARD_DIR / "styles.css").read_bytes(), "text/css; charset=utf-8")
             return
         if path == "/app.js":
             self._send(200, (DASHBOARD_DIR / "app.js").read_bytes(), "text/javascript; charset=utf-8")
+            return
+        if path in STATIC_ASSETS:
+            filename, content_type = STATIC_ASSETS[path]
+            self._send(200, (DASHBOARD_DIR / filename).read_bytes(), content_type)
             return
         self._json(404, {"error": "Not found"})
 
