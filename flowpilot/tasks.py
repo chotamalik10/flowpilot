@@ -1,8 +1,8 @@
+import collections.abc
 import typing
-from collections.abc import Callable
 
 
-Task = Callable[[dict[str, typing.Any]], None]
+Task = collections.abc.Callable[[dict[str, typing.Any]], None]
 
 
 def print_task(config: dict[str, typing.Any]) -> None:
