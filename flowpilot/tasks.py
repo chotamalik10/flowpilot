@@ -1,5 +1,5 @@
-import typing
 from collections.abc import Callable
+import typing
 
 
 Task = Callable[[dict[str, typing.Any]], None]
