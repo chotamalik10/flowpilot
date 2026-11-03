@@ -1,5 +1,5 @@
-from collections.abc import Callable
 import typing
+from collections.abc import Callable
 
 
 Task = Callable[[dict[str, typing.Any]], None]
