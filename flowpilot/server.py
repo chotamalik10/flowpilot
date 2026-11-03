@@ -152,6 +152,6 @@ def serve(host: str = "127.0.0.1", port: int = 8765) -> None:
     try:
         server.serve_forever()
     except KeyboardInterrupt:
-        print("\\nShutting down FlowPilot...")
+        print("\nShutting down FlowPilot...")
     finally:
         server.server_close()
