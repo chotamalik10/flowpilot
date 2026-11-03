@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <title>FlowPilot — Automation Control Center</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#"><span class="brand-mark">F</span><span>FlowPilot<small>AUTOMATION STUDIO</small></span></a>
+      <div class="nav-label">WORKSPACE</div>
+      <a class="nav-item active" href="#"><span>◫</span> Overview</a>
+      <a class="nav-item" href="#builder"><span>⌘</span> Workflow builder</a>
+      <a class="nav-item" href="#history"><span>◷</span> Activity</a>
+      <div class="sidebar-bottom"><span class="status-dot"></span> Local engine connected<small>Runs privately on this device</small></div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><div><div class="eyebrow">WORKSPACE / OVERVIEW</div><h1>Automation control center</h1><p>Design, launch and monitor your workflows.</p></div><div class="top-actions"><span class="local-pill"><i></i> LOCAL MODE</span><button class="primary" id="new-workflow">＋ New workflow</button></div></header>
+      <section class="stats">
+        <article class="stat-card"><span>Total workflows</span><strong id="workflow-count">—</strong><small>Saved on this device</small></article>
+        <article class="stat-card"><span>Engine status</span><strong class="online">Operational</strong><small>Local API responding</small></article>
+        <article class="stat-card"><span>Execution mode</span><strong>On demand</strong><small>Manual workflow runs</small></article>
+      </section>
+      <section class="panel" id="builder">
+        <div class="panel-heading"><div><div class="eyebrow">BUILD & DEPLOY</div><h2>Create a workflow</h2><p>Start with a safe print task. More task types can be added as the engine grows.</p></div><span class="step-count">01 / BUILDER</span></div>
+        <form id="workflow-form">
+          <label>Workflow name<input id="workflow-name" required maxlength="64" placeholder="e.g. Daily report"></label>
+          <div class="builder-step"><div class="step-number">01</div><div class="step-fields"><label>Step name<input id="step-name" required value="welcome" maxlength="64"></label><label>Task type<select id="task-type"><option value="print">Print message</option></select></label><label class="wide">Message<input id="step-message" required value="Hello from FlowPilot!" maxlength="2000"></label></div></div>
+          <div class="form-footer"><span class="muted">Workflow is validated before saving.</span><button class="primary" type="submit">Save workflow</button></div>
+        </form>
+      </section>
+      <section class="panel" id="history">
+        <div class="panel-heading"><div><div class="eyebrow">YOUR AUTOMATIONS</div><h2>Workflows</h2><p>Saved workflows ready to execute.</p></div><button class="subtle" id="refresh">↻ Refresh</button></div>
+        <div id="workflow-list" class="workflow-list"><div class="empty">Loading workflows…</div></div>
+      </section>
+      <div id="notice" class="notice" role="status" aria-live="polite"></div>
+      <footer>FLOWPILOT <span>•</span> Open-source workflow automation <span>•</span> Local-first by design</footer>
+    </main>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>
